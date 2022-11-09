@@ -1,7 +1,7 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import { fetchData } from "../api/fetch";
 
-export async function loader({ params }) {
+export async function loader({ params }: LoaderFunctionArgs) {
   return fetchData(`/users/${params.userId}`);
 }
 
