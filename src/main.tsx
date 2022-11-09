@@ -34,19 +34,24 @@ const client = createClient({
   webSocketProvider,
 });
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Root />,
+      errorElement: <ErrorPage />,
+      loader: RootLoader,
+    },
+    {
+      path: "/user/:userId",
+      element: <User />,
+      loader: UserLoader,
+    },
+  ],
   {
-    path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage />,
-    loader: RootLoader,
-  },
-  {
-    path: "/user/:userId",
-    element: <User />,
-    loader: UserLoader,
-  },
-]);
+    basename: import.meta.env.VITE_APP_BASENAME ?? "/",
+  }
+);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <WagmiConfig client={client}>
