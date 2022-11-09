@@ -1,5 +1,8 @@
 # popex-test-vite
 
+In production:
+https://tatarianbarbarian.github.io/popex-test-vite/
+
 Built with React + TS, Tailwind, Vite.
 
 Running locally:
