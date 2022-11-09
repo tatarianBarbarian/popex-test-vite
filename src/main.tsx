@@ -57,5 +57,15 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <WagmiConfig client={client}>
     <Header />
     <RouterProvider router={router} />
+    <div className="text-center p-4 mt-10">
+      <a
+        href="https://github.com/tatarianBarbarian/popex-test-vite"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-sky-700 hover:underline"
+      >
+        Source Code
+      </a>
+    </div>
   </WagmiConfig>
 );
