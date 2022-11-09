@@ -1,34 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import sampleUsers from "./sample-users.json";
+
+type User = {
+  id: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+  avatar: string;
+};
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="App w-2/4 grid mx-auto">
+      <table className="table-auto w-full place-self-center">
+        <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+          <tr>
+            <th className="p-2 whitespace-nowrap">
+              <div className="font-semibold text-left">Name</div>
+            </th>
+            <th className="p-2 whitespace-nowrap">
+              <div className="font-semibold text-left">Email</div>
+            </th>
+            <th className="p-2 whitespace-nowrap">
+              <div className="font-semibold text-left">ID</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody className="text-sm divide-y divide-gray-100">
+          {sampleUsers.data.map((user: User) => {
+            return (
+              <tr key={user.id}>
+                <td className="p-2 whitespace-nowrap">
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
+                      <img
+                        className="rounded-full"
+                        src={user.avatar}
+                        width="40"
+                        height="40"
+                        alt="Alex Shatov"
+                      />
+                    </div>
+                    <div className="font-medium text-gray-800">
+                      {user.first_name + " " + user.last_name}
+                    </div>
+                  </div>
+                </td>
+                <td className="p-2 whitespace-nowrap">
+                  <div className="text-left">{user.email}</div>
+                </td>
+                <td className="p-2 whitespace-nowrap">
+                  <div className="text-left font-medium text-green-500">
+                    {user.id}
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
